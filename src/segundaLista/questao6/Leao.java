@@ -33,7 +33,8 @@ public class Leao {
     public void MostraInfo(){
         System.out.println("Nome: " + this.nome);
         System.out.println("Animais comido: " + this.animaiscomidos);
-        System.out.println("Nome dos animais comidos: " + this.nomeaimaiscomidos);
+        System.out.println("Nome dos animais comidos: " );
+
 
     }
 
