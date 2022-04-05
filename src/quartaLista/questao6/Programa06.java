@@ -1,4 +1,4 @@
-package questao6;
+package quartaLista.questao6;
 
 public class Programa06 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package questao6;
+package quartaLista.questao6;
 
 public class RadioRelogio {
     int horas;
