@@ -16,12 +16,9 @@ public class Retangulo {
         this.lado2 = lado2;
     }
 
-    public void setLado1(int lado1) {
-        this.lado1 = lado1;
-    }
-
-    public void setLado2(int lado2) {
-        this.lado2 = lado2;
+    void setLados(int l1, int l2){
+        this.lado1 = l1;
+        this.lado2 = l2;
     }
 
     public double calculoArea(){

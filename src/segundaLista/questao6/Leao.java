@@ -19,15 +19,22 @@ public class Leao {
         this.nome = nome;
     }
 
-    public String Come(){
+    public void setAnimaiscomidos(int animaiscomidos) {
+        this.animaiscomidos = animaiscomidos;
+    }
 
-        return Come();
+    void come(String animal){
+        System.out.println("Zebra");
+        System.out.println("Cabra");
+        System.out.println("Coiote");
+        System.out.println("Bufalo");
     }
 
     public void MostraInfo(){
         System.out.println("Nome: " + this.nome);
         System.out.println("Animais comido: " + this.animaiscomidos);
         System.out.println("Nome dos animais comidos: " + this.nomeaimaiscomidos);
+
     }
 
 

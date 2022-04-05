@@ -9,10 +9,10 @@ public class Questao03 {
         circulo01.setRaio(8.0);
         circulo02.setRaio(7.5);
 
-        System.out.println("Circulo01");
+        System.out.println("Circulo 01: ");
         circulo01.mostraInfo();
         System.out.println();
-        System.out.println("Circulo02");
+        System.out.println("Circulo 02: ");
         circulo02.mostraInfo();
 
 
