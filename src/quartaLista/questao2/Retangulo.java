@@ -5,8 +5,6 @@ public class Retangulo {
     int lado2;
 
     Retangulo(){
-        lado1 = 20;
-        lado2 = 13;
     }
 
     public Retangulo(int lado1, int lado2) {
@@ -27,11 +25,13 @@ public class Retangulo {
     boolean ehQuadrado(){
         if (lado1 == lado2){
             System.out.println("É quadrado");
+            return true;
         }
         if (lado1 != lado2){
             System.out.println("Não é quadrado");
+            return false;
         }
-        return true;
+        return ehQuadrado();
     }
     void mostraInfo(){
         System.out.println(lado1);

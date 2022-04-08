@@ -6,24 +6,19 @@ import java.util.Scanner;
 
 public class Questao05 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        List<CarrinhoDeSupermercado> lista = new ArrayList<>();
-        int n = sc.nextInt();
+        CarrinhoDeSupermercado carrinhoDeSupermercado1 = new CarrinhoDeSupermercado(" ");
+        CarrinhoDeSupermercado carrinhoDeSupermercado2 = new CarrinhoDeSupermercado("João");
 
-        for (int i = 0; i < n; i++){
-            System.out.println("Nome: ");
-            String nome = sc.nextLine();
-            System.out.println("Valor: ");
-            Double valor = sc.nextDouble();
+        carrinhoDeSupermercado2.adicionaProduto("Pera", 5.80);
+        carrinhoDeSupermercado2.adicionaProduto("Maçã", 0.20);
 
-            CarrinhoDeSupermercado add = new CarrinhoDeSupermercado(nome, valor);
-            lista.add(add);
-        }
+        carrinhoDeSupermercado2.mostraInfo();
+        carrinhoDeSupermercado2.limpa();
+        carrinhoDeSupermercado2.mostraInfo();
 
 
+        carrinhoDeSupermercado1.mostraInfo();
 
-
-        sc.close();
     }
 }

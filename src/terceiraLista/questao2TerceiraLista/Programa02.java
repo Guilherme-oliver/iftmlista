@@ -21,8 +21,8 @@ public class Programa02 {
         System.out.println(calculadora.divide(189.3,3.75));
         System.out.println();
 
-        System.out.println(calculadora.potencia(45, 4));
-        System.out.println(calculadora.potencia(1899.72,7.2));
+        System.out.println(calculadora.potencia(45, 3));
+        System.out.println(calculadora.potencia(19.72,2));
         System.out.println();
 
         System.out.println(calculadora.raizQuadrada(9));

@@ -5,36 +5,42 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarrinhoDeSupermercado {
-    String dono;
-    Double produtos = 0.0;
+    String dono ;
+    int produtos = 0;
     String lista = "";
     double valorcomprado = 0.0;
-    Scanner scanner = new Scanner(System.in);
 
-    CarrinhoDeSupermercado(String nome, Double valor){
+    public CarrinhoDeSupermercado(){
 
     }
 
-    public CarrinhoDeSupermercado(String dono, Double produtos, String lista, double valorcomprado) {
-        this.dono = dono;
-        this.produtos = produtos;
-        this.lista = lista;
-        this.valorcomprado = valorcomprado;
+    public CarrinhoDeSupermercado(String dono) {
+        if (dono == " "){
+            System.out.println("Erro");
+        }else {
+            this.dono = dono;
+        }
+
     }
 
     public void adicionaProduto(String nome, Double valor){
-        lista = nome;
-        produtos = valor;
+        if (nome == " " && valor < 0){
+            System.out.println("Erro");
+        }else {
+           this.produtos += 1;
+           this.valorcomprado += valor;
+           this.lista += nome + "\n";
+        }
+
     }
     public void limpa(){
-        List<String> lista = new ArrayList<>();
-        lista.removeAll(lista);
+        this.produtos = 0;
+        this.valorcomprado = 0;
+        this.lista = " ";
     }
     void mostraInfo(){
-        System.out.println(dono);
-        System.out.println(produtos);
-        System.out.println(lista);
-        System.out.println(valorcomprado);
+        System.out.println("Dono: " + dono + " quantidade de produtos: " + produtos + " valor da compra" + valorcomprado
+        + " lista de produtos: " + lista + "\n\n");
 
 
     }

@@ -7,101 +7,67 @@ public class RadioRelogio {
     boolean ligado = false;
 
     RadioRelogio(){
-
     }
-
-    public RadioRelogio(int horas, int minutos, int estacao, boolean ligado) {
+    public RadioRelogio(int horas, int minutos, int estacao) {
         this.horas = horas;
         this.minutos = minutos;
         this.estacao = estacao;
-        this.ligado = ligado;
     }
-
-    public int getHoras() {
-        return horas;
-    }
-
-    public int getMinutos() {
-        return minutos;
-    }
-
-    public int getEstacao() {
-        return estacao;
-    }
-
-    public void setHoras(int horas) {
-        this.horas = horas;
-    }
-
-    public void setMinutos(int minutos) {
-        this.minutos = minutos;
-    }
-
-    public void setEstacao(int estacao) {
-        this.estacao = estacao;
-    }
-
-    public void setLigado(boolean ligado) {
-        this.ligado = ligado;
-    }
-
     void avancaHora(){
-        horas = 0;
-        int horasAtual = 24;
-        if (horasAtual == 24){
-            horas = horasAtual - 24 + 1;
-        }else {
+        if (horas < 24){
             horas += horas + 1;
+        }else if (horas == 24){
+            horas = 0 ;
         }
-
     }
     void avancaMinuto(){
-        minutos = 0;
-        int minutosAtual = 24;
-        if (minutosAtual == 59){
-            minutos = minutosAtual -59 + 1;
-        }else {
+        if (minutos < 59){
             minutos += minutos + 1;
+        }else if (minutos == 59){
+            minutos = 0 ;
+            horas = horas + 1;
+        }
+        if (horas < 24){
+            horas += horas + 1;
+        }else if (horas >= 24){
+            horas = 0 ;
         }
     }
-
     void liga(){
-       if (ligado == false){
-           System.out.println("Está desligado");
-           System.out.println("Ligando...");
+       if (ligado == true){
+           System.out.println("Já está desligado");
+       }else if (ligado == false){
            ligado = true;
-       }else {
-           System.out.println("Já está ligado");
+           System.out.println("Ligando...");
        }
     }
     void desliga(){
-        if (ligado == true){
-            System.out.println("Está ligado");
+        if (ligado == false){
+            System.out.println("...");
+        }else if (ligado == true){
             System.out.println("Desligando...");
             ligado = false;
-        }else {
-            System.out.println("Já está desligado");
         }
     }
     void trocaEstacao(int estacao){
-        this.estacao = estacao ;
-        int estacaoAtual = 108;
-        if (estacaoAtual > 108){
-            System.out.println("ZZZZzzzzzZZZZ");
-        }else if (estacaoAtual < 87){
-            System.out.println("ZZZZzzzzzZZZZ");
-        }else {
-            System.out.println("Você está na estação " + estacao);
+        this.estacao = estacao;
+        if (estacao < 108 && estacao >= 87){
+            this.estacao += estacao + 1;
+        }else if (estacao > 108){
+            this.estacao += 87;
+        }else if (estacao < 87){
+            this.estacao = 108;
         }
+
     }
     void mostraInfo(){
-        System.out.println("Horas: " + horas);
-        System.out.println("Minutos: " + minutos);
-        System.out.println(estacao);
-        if (ligado == false){
-            liga();
+        if (ligado == true){
+            if (estacao > 108 && estacao < 87){
+                System.out.println("Erro de frequencia");
+            }
+            System.out.println("Horas: " + horas + ":" + minutos + "\n" + "Estamos na estação: " + estacao);
         }else {
-            desliga();
+            System.out.println("...");
         }
     }
 }

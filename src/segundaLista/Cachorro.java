@@ -5,14 +5,16 @@ public class Cachorro {
     String nome = "Totó";
     int idade = 5;
 
-    void late(int vezes){
-        System.out.println("Latiu " + vezes + " vezes");
+    void late(int vezes) {
+        if (vezes <= 0) {
+            System.out.println("Erro");
+        } else {
+            System.out.println("Latiu " + vezes + " vezes");
+        }
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
     public void setIdade(int idade) {
         this.idade = idade;
     }

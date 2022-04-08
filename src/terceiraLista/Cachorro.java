@@ -4,17 +4,17 @@ public class Cachorro {
     String nome = "Totó";
     int idade = 5;
 
-    String late(){
-        return "au au";
+    void late(){
+        System.out.println("Au au");
     }
-    String late(String latido){
-        return latido;
+    void late(String latido){
+        System.out.println("Latiu: auauau" + latido);
     }
-    String late(int vezes){
-        return "Latiu " + vezes + " vezes " + late() ;
+    void late(int vezes){
+        System.out.println("Latiu: " + vezes + " vezes");
     }
-    String late(int vezes, String latido){
-        return "Latiu " + vezes  + " x"+ " auuuuuu " + latido ;
+    void late(int vezes, String latido){
+        System.out.println("Latiu " + vezes  + " x"+ " auuuuuu " + latido) ;
     }
     String setInfo(String n){
         return nome = n;
@@ -31,8 +31,8 @@ public class Cachorro {
         this.idade = idade;
     }
 
-    String mostraInfo(){
-        return "Nome: " + nome + " ,idade: " + idade;
+    void mostraInfo(){
+        System.out.println("Nome: " + nome + " ,idade: " + idade);
     }
 
 }

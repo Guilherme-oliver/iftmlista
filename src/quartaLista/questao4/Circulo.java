@@ -4,7 +4,6 @@ public class Circulo {
     double raio;
 
     Circulo(){
-
     }
 
     public Circulo(double raio) {

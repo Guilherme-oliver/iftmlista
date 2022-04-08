@@ -3,7 +3,7 @@ package quartaLista.questao3;
 public class Questao03 {
     public static void main(String[] args) {
 
-        Triangulo triangulo1 = new Triangulo();
+        Triangulo triangulo1 = new Triangulo(10, 10, 10);
         Triangulo triangulo2 = new Triangulo();
 
         triangulo1.lado1 = 20;

@@ -5,25 +5,22 @@ public class Cachorro {
     int idade;
 
     public Cachorro(){
-        nome = "Plankton";
-        idade = 99999;
     }
 
     public Cachorro(String nome) {
-        this.nome = nome;
+        nome = "GOD";
     }
 
     public Cachorro(int idade) {
-        this.idade = idade;
+        idade = 1;
     }
 
     public Cachorro(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
     }
-    boolean late(){
-        System.out.println("Au au");
-        return true;
+    void late(){
+        System.out.println("Latiu: au au" );
     }
     int setInfo(int i){
         this.idade = i;
@@ -45,9 +42,7 @@ public class Cachorro {
 
     void mostraInfo(){
         System.out.println("Informações");
-        System.out.println(nome);
-        System.out.println(idade);
-        late();
-
+        System.out.println("Nome do cachorro: " + nome);
+        System.out.println("Idade do cachorro: " + idade);
     }
 }

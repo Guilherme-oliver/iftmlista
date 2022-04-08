@@ -5,20 +5,20 @@ public class Programa {
         Cachorro cachorro01 = new Cachorro();
         Cachorro cachorro02 = new Cachorro();
 
-        System.out.println(cachorro01.late());
-        System.out.println(cachorro02.late());
+        cachorro01.late();
+        cachorro02.late();
         System.out.println();
 
-        System.out.println(cachorro01.late("latido"));
-        System.out.println(cachorro02.late("latido"));
+        cachorro01.late("latido");
+        cachorro02.late("latido");
         System.out.println();
 
-        System.out.println(cachorro01.late(3));
-        System.out.println(cachorro02.late(1));
+        cachorro01.late(3);
+        cachorro02.late(1);
         System.out.println();
 
-        System.out.println(cachorro01.late(4, "latidos"));
-        System.out.println(cachorro02.late(5, "latidos"));
+        cachorro01.late(4, "latidos");
+        cachorro02.late(5, "latidos");
         System.out.println();
 
         cachorro01.setInfo("Bilu");
@@ -43,8 +43,8 @@ public class Programa {
         System.out.println(cachorro02.nome);
         System.out.println();
 
-        System.out.println(cachorro01.mostraInfo());
-        System.out.println(cachorro02.mostraInfo());
+        cachorro01.mostraInfo();
+        cachorro02.mostraInfo();
 
     }
 }

@@ -2,7 +2,7 @@ package quartaLista.questao2;
 
 public class Questao02 {
     public static void main(String[] args) {
-        Retangulo retangulo1 = new Retangulo();
+        Retangulo retangulo1 = new Retangulo(20, 35);
         Retangulo retangulo2 = new Retangulo();
 
 

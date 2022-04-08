@@ -39,7 +39,7 @@ public class Calculadora {
         for (int i = 1; i<=base; i++){
             exp = i;
         }
-        return exp;
+        return base * exp;
     }
     double raizQuadrada(int op){
         if (op <= 0){
