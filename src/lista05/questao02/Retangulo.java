@@ -8,8 +8,12 @@ public class Retangulo {
     }
 
     public Retangulo(int lado1, int lado2) {
-        this.lado1 = lado1;
-        this.lado2 = lado2;
+        if (lado1 < 0 && lado2 < 0){
+            System.out.println("Valores invalidos!");
+        }else {
+            this.lado1 = lado1;
+            this.lado2 = lado2;
+        }
     }
     public void setLados(int lado1, int lado2){
         this.lado1 = lado1;
@@ -23,14 +27,10 @@ public class Retangulo {
     }
     private boolean ehQuadrado(){
         if (lado1 == lado2){
-            System.out.println("É quadrado");
             return true;
-        }
-        if (lado1 != lado2){
-            System.out.println("Não é quadrado");
+        }else{
             return false;
         }
-        return ehQuadrado();
 
     }
     public String toString(){

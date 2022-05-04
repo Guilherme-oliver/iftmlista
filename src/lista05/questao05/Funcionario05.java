@@ -11,9 +11,21 @@ public class Funcionario05 {
     }
 
     public Funcionario05(String nome, double salario, double bonificacao) {
-        this.nome = nome;
-        this.salario = salario;
-        this.bonificacao = bonificacao;
+      if(nome == " "){
+          System.out.println("Nome invalido!");
+      }else {
+          this.nome = nome;
+      }
+      if (salario <= 0){
+          System.out.println("Valor invalido!");
+      }else {
+          this.salario = salario;
+      }
+      if (bonificacao <= 0){
+          System.out.println("Valor invalido!");
+      }else {
+          this.bonificacao = bonificacao;
+      }
     }
 
     public String toString(){
@@ -34,7 +46,11 @@ public class Funcionario05 {
     }
     public void setBonificacao(double porcentagem){
         if (ativo == true){
-            this.bonificacao = porcentagem / 100;
+            if (porcentagem <= 0){
+                System.out.println("Bonificação não pode ser menor ou igual [0]");
+            }else {
+                this.bonificacao =  porcentagem / 100;
+            }
         }else {
             System.out.println("Não recebe bonificação");
         }
@@ -42,19 +58,23 @@ public class Funcionario05 {
 
     public void setSalario(double salario) {
         if (ativo == true){
-            this.salario += salario * 10 / 100;
+            if (salario <= this.salario){
+                System.out.println("O salario deve aumentar!");
+            }else {
+                this.salario = salario;
+            }
         }else {
-            this.salario = salario;
+            System.out.println("Funcionario não recebe alteração no salario");
         }
     }
 
     public void mudaStatus(){
-        if (ativo == true){
-            System.out.println("Afastando o funcionario: " + nome);
-            ativo = false;
-        }else {
-            System.out.println("Fim do periodo de afastamento do funcionario: " + nome);
+        if (ativo){
+            System.out.println("Fim do periodo de afastamento ");
             ativo = true;
+        }else if(ativo == true){
+            System.out.println("Funcionario foi afastado");
+            ativo = false;
         }
     }
     public double calcGanhoMensal(){
@@ -69,7 +89,7 @@ public class Funcionario05 {
         if (ativo == true){
             return calcGanhoMensal() * 12;
         }else {
-            return salario * 12;
+            return calcGanhoMensal() * 12;
         }
     }
 

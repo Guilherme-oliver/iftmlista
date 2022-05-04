@@ -2,7 +2,7 @@ package lista05.questao03;
 
 public class ContaPoupanca {
 
-    private String titular = "José";
+    private String titular;
     private double saldo = 0.0;
 
     public ContaPoupanca(){
@@ -10,20 +10,23 @@ public class ContaPoupanca {
     }
 
     public ContaPoupanca(String titular) {
-        this.titular = titular;
+        if (titular == " "){
+            System.out.println("Titular invalido!");
+        }else {
+            this.titular = titular;
+        }
     }
 
     public void sacar(double valor){
-        if (saldo < valor){
-            System.out.println("Você ira ficar negativo");
-            saldo -= valor;
-        }else {
-            saldo -= valor;
-        }
+       if (valor < 0){
+           System.out.println("Valor invalido!");
+       }else {
+           saldo -= valor;
+       }
     }
     public void depositar(double valor){
-        if (valor < 0){
-            System.out.println("Erro");
+        if (valor <= 0){
+            System.out.println("Valor invalido");
         }else {
             saldo += valor;
         }

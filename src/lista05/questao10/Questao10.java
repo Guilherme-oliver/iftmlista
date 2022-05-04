@@ -5,7 +5,7 @@ public class Questao10 {
 
         Trem trem = new Trem("merda", 4, 3);
 
-        trem.avancaEstacao(2);
+        trem.avancaEstacao();
         System.out.println(trem.toString());
     }
 }

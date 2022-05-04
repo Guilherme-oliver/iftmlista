@@ -9,12 +9,19 @@ public class ContaCorrente {
     private double tarifa = 1.50;
 
     public ContaCorrente(){
-
     }
 
     public ContaCorrente(String titular, double limite) {
-        this.titular = titular;
-        this.limite = limite;
+       if (titular == " "){
+           System.out.println("Titular invalido!");
+       }else {
+           this.titular = titular;
+       }
+        if (limite <= 0){
+            System.out.println("Valor invalido!");
+        }else {
+            this.limite = limite;
+        }
     }
 
     public String toString(){

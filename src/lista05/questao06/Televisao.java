@@ -14,8 +14,17 @@ public class Televisao {
     }
 
     public Televisao(int volMax, int canalMax) {
-        this.volMax = volMax;
-        this.canalMax = canalMax;
+        if (volMax <= volMin || volMax < 0){
+            System.out.println("Não é valor máximo!");
+        }else {
+            this.volMax = volMax;
+        }
+
+        if (canalMax <= canalMin || canalMax < 2){
+            System.out.println("Não é valor máximo");
+        }else {
+            this.canalMax = canalMax;
+        }
     }
     public String toString(){
         if (ligado == true){
@@ -39,39 +48,60 @@ public class Televisao {
         }
     }
     public void aumentaVolume(){
-        if (volAtual == 100){
-            System.out.println("Volume maximo: " + volMax);
-        }else if (volAtual >= 0){
-            volAtual = volAtual + 1;
+        if (ligado == true){
+            if (volAtual >= volMin && volAtual < volMax){
+                volAtual++;
+            }else if (volAtual == volMax){
+                System.out.println("Volume está no máximo");
+            }else {
+                System.out.println("Não dá para alterar o volume");
+            }
+        }else {
+            System.out.println("Desligado");
         }
     }
     public void diminuiVolume(){
-        if (volAtual == 0){
-            System.out.println("Volume minimo: " + volMin);
-        }else if (volAtual <= 100){
-            volAtual = volAtual - 1;
+        if (ligado == true){
+            if (volAtual <= volMax && volAtual > volMin){
+                volAtual--;
+            }else if (volAtual == volMin){
+                System.out.println("Volume está no mínimo");
+            }else {
+                System.out.println("Não dá para alterar o volume");
+            }
+        }else {
+            System.out.println("TV Desligado!");
         }
     }
     public void aumentaCanal(){
-        if (canalAtual >= canalMin){
-            canalAtual = canalAtual + 1;
-        }else if (canalAtual == canalMax){
-            canalAtual = canalMin;
+        if (ligado){
+            System.out.println("TV Desligado!");
+        }else {
+            if (canalAtual >= canalMin){
+                canalAtual++;
+            }else if (canalAtual == canalMax){
+                canalAtual = canalMin;
+            }
         }
     }
     public void diminuiCanal(){
-        if (canalAtual == canalMin){
-            canalAtual = canalMax;
-        }else if (canalAtual == canalMax){
-            canalAtual = canalMax - 1;
+        if (ligado){
+            System.out.println("TV Desligado!");
         }else {
-            canalAtual = canalAtual - 1;
+            if (canalAtual == canalMin){
+                canalAtual = canalMax;
+            }else if (canalAtual == canalMax){
+                canalAtual--;
+            }
         }
     }
     public void setCanal(int canal){
         if (canalAtual >= canalMin && canalAtual <= canalMax){
-           this.canalAtual = canal;
-           aumentaCanal();
+           do {
+               aumentaCanal();
+                canal++;
+           }while (canal == canalMax);
+
         }else {
             System.out.println("Canal fora de frequencia");
         }

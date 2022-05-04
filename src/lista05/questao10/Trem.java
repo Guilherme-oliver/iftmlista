@@ -13,9 +13,21 @@ public class Trem {
     }
 
     public Trem(String nome, int estacaofinal, int cabines) {
-        this.nome = nome;
-        this.estacaofinal = estacaofinal;
-        this.cabines = cabines;
+       if (nome == " "){
+           System.out.println("Nome invalido!");
+       }else {
+           this.nome = nome;
+       }
+       if (estacaofinal <= 0 && estacaofinal > 4){
+           System.out.println("Valor invalido");
+       }else {
+           this.estacaofinal = estacaofinal;
+       }
+       if (cabines < 2){
+           System.out.println("Valor invalido");
+       }else {
+           this.cabines = cabines;
+       }
     }
 
     private String infoEstacao(int estacao) {
@@ -36,7 +48,7 @@ public class Trem {
     }
 
     private String infoCap() {
-        return String.valueOf(cabines * pessoas);
+        return  "São " + cabines + " cabine no trem, com capacidade de" + pessoas + " pessoas por cabine, o total de pessoas: " + (cabines * pessoas);
     }
 
     public String toString() {
@@ -49,8 +61,11 @@ public class Trem {
                 + "Quantidade de cabines no trem: "
                 + cabines
                 + "\n"
-                + "Número de pessoas"
-                + pessoas;
+                + "Número de pessoas: "
+                + pessoas
+                + "\n"
+                + "Capacidade total de pessoas no trem: "
+                + pessoas * cabines;
     }
 
     public void entra() {
@@ -64,41 +79,53 @@ public class Trem {
     }
 
     private void trocaSentido() {
-        if (indo) {
-            indo = false;
-        } else {
+        if (indo == false && estacaoatual == 0 ){
             indo = true;
+        }else if (indo == true && estacaoatual == estacaofinal){
+            indo = false;
+        }else{
+            System.out.println("Não dá para trocar sentido");
         }
     }
 
     public void avancaEstacao() {
 
-        System.out.println(infoEstacao(estacaoatual));
-
-        if (estacaoatual == estacaofinal) {
-            trocaSentido();
+        if (indo){
+            if (estacaoatual == estacaofinal){
+                trocaSentido();
+                estacaoatual--;
+                System.out.println(infoEstacao(estacaofinal)+ "Andou até " + infoEstacao(estacaoatual));
+            }else {
+                estacaoatual++;
+                System.out.println(infoEstacao(estacaoatual));
+            }
+        }else {
+            if (estacaoatual == 0){
+                trocaSentido();
+                estacaoatual++;
+                System.out.println(infoEstacao(0)+ "Andou até " + infoEstacao(estacaoatual));
+            }else {
+                estacaoatual--;
+                System.out.println(infoEstacao(estacaoatual));
+            }
         }
-        if (indo) {
-            estacaoatual++;
-        } else {
-            estacaoatual--;
-        }
-        System.out.println("Chegou em" + infoEstacao(estacaoatual));
 
     }
 
     public void avancaEstacao(int estacao) {
-       if (indo && estacao < estacaofinal){
-          do {
-              avancaEstacao();
-          }while (estacao < estacaofinal);
-       }else if (!indo || estacao >= estacaofinal){
-           System.out.println("O trem não pode ficar na mesma estação ou voltar");
-       }else if (!indo && estacao < estacaofinal){
-           do {
-               avancaEstacao();
-           }while (estacao >=0);
-       }
+
+      if (estacao < 0 || estacao > estacaofinal){
+          System.out.println("Estação é invalida!");
+      }else {
+          if (estacaoatual == estacao){
+              System.out.println("Já estamos na estação atual!");
+          }else {
+              do {
+                  avancaEstacao();
+                  estacao--;
+              }while (estacao > 0 );
+          }
+      }
 
     }
 

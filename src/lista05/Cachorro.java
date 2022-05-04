@@ -9,8 +9,16 @@ public class Cachorro {
 
     }
     public Cachorro(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
+        if (nome == " "){
+            System.out.println("Nome invalido");
+        }else {
+            this.nome = nome;
+        }
+        if (idade < 0){
+            System.out.println("Erro na idade");
+        }else {
+            this.idade = idade;
+        }
     }
     private void late(){
         System.out.println("au au");
@@ -24,10 +32,18 @@ public class Cachorro {
         late();
     }
     public void setNome(String nome){
-        this.nome = nome;
+        if (nome == " "){
+            System.out.println("Sem nome");
+        }else {
+            this.nome = nome;
+        }
     }
     public void setIdade(int idade){
-        this.idade = idade;
+        if (idade < 0){
+            System.out.println("Idade invalida");
+        }else {
+            this.idade = idade;
+        }
     }
     public String toString(){
         return "Nome do cachorro: "

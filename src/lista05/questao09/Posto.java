@@ -13,11 +13,36 @@ public class Posto {
     }
 
     public Posto(String nome, double precogas, int estoquegas, double precoetanol, int estoqueetanol) {
-        this.nome = nome;
-        this.precogas = precogas;
-        this.estoquegas = estoquegas;
-        this.precoetanol = precoetanol;
-        this.estoqueetanol = estoqueetanol;
+       if (nome == " "){
+           System.out.println("Nome invalido");
+       }else {
+           this.nome = nome;
+       }
+
+       if (precogas < 1.00){
+           System.out.println("Preço invalido!");
+       }else {
+           this.precogas = precogas;
+       }
+
+       if (estoquegas <= 0){
+           System.out.println("Valor invalido");
+       }else {
+           this.estoquegas = estoquegas;
+       }
+
+       if (estoqueetanol <= 0){
+           System.out.println("Valor invalido!");
+       }else {
+           this.estoqueetanol = estoqueetanol;
+       }
+
+       if (precoetanol < 1.00){
+           System.out.println("Preço invalido!");
+       }else {
+           this.precoetanol = precoetanol;
+       }
+
     }
 
     private String informaGasolina(){
@@ -38,8 +63,12 @@ public class Posto {
                 + " litros";
     }
     public String informaCombustivel(String tipo){
-        return informaEtanol()
-                + informaGasolina();
+        if (tipo == "Etanol"){
+            return informaEtanol();
+        }else if (tipo == "Gasolina"){
+            return informaGasolina();
+        }
+        return "invalido!";
     }
     public String informaPariedade(){
         double pariedade = (precogas / precoetanol) * 100;

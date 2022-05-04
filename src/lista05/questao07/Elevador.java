@@ -12,13 +12,33 @@ public class Elevador {
     }
 
     public Elevador(int andares, int subsolo, int capacidade) {
-        this.andares = andares;
-        this.subsolo = subsolo;
-        this.capacidade = capacidade;
+       if (andares <= 0){
+           System.out.println("Valor invalido!");
+       }else {
+           this.andares = andares;
+       }
+       if (subsolo <= 0){
+           System.out.println("Valores invalidos!");
+       }else {
+           this.subsolo = subsolo;
+       }
+       if (capacidade <= 3){
+           System.out.println("Valores invalidos!");
+       }else{
+           this.capacidade = capacidade;
+       }
+
     }
 
     private String getAndar(){
-       return "Elevador está " + andarAtual ;
+       if (andarAtual > 0){
+           return andarAtual + " Andar";
+       }else {
+           if (andarAtual == 0){
+               return "Terreo";
+           }
+           return "Subsolo" + andarAtual * -1;
+       }
     }
     public String toString(){
         return "Andar atual"
@@ -37,7 +57,7 @@ public class Elevador {
         else if (capacidade == pessoas){
             System.out.println("Capacidade maxima atingida, número de pessoas:" + pessoas);
         }else {
-            pessoas = pessoas + 1;
+            pessoas++;
             System.out.println("Quantidade de pessoas atual:" + pessoas);
         }
     }
@@ -53,74 +73,51 @@ public class Elevador {
         }
     }
     public void sai(){
-        if (capacidade <= pessoas){
-            pessoas = pessoas - 1;
-        }else if (capacidade < 0){
-            System.out.println("Erro de leitura");
+        if (pessoas > 0){
+            this.pessoas--;
+            System.out.println("Quantidade atual de pessoas:" + pessoas );
+        }else {
+            System.out.println("Não tem pessoas no elevador!");
         }
     }
     public void sai(int pessoas){
-        if (capacidade <= this.pessoas){
-            this.pessoas -= pessoas;
-        }else if (capacidade < 0){
-            System.out.println("Erro de leitura");
-        }
+       if (pessoas > 0 && pessoas <= this.pessoas){
+           do {
+               sai();
+               pessoas--;
+           }while (pessoas > 0);
+       }else {
+           System.out.println("Quantidade de pessoas invalido!");
+       }
     }
     public void sobe(){
-        if (andarAtual == 0){
-            System.out.println("Terro");
-            andarAtual += 1;
-            System.out.println("Subindo para " + andarAtual + "o. andar");
-        }else if (andarAtual <= andares && andarAtual > 0){
-            System.out.println(andarAtual + "o. andar");
-            andarAtual += 1;
-            System.out.println("Subindo para " + andarAtual + "o. andar");
-        }else if (andarAtual < 0){
-            System.out.println("Subsolo" + andarAtual);
-        }
+       if (andarAtual < andares){
+           andarAtual++;
+           System.out.println("Subiu até: " + getAndar());
+       }
 
     }
     public void desce(){
-        if (andarAtual == 0){
-            System.out.println("Terro");
-            andarAtual -= 1;
-            System.out.println("Descendo para o subsolo " + andarAtual);
-        }else if (andarAtual <= andares && andarAtual > 0){
-            System.out.println(andarAtual + "o. andar");
-            andarAtual -= 1;
-            System.out.println("Descendo para " + andarAtual + "o. andar");
-        }else if (andarAtual > 0 && andarAtual > subsolo){
-            System.out.println("Subsolo" + andarAtual);
-            System.out.println("Descendo para o subsolo " + andarAtual);
-        }
+       if (andarAtual < subsolo){
+           andarAtual--;
+           System.out.println("Desceu até: " + getAndar());
+       }
     }
     public void mudaAndar(int andar){
-        if (andarAtual == 0){
-            System.out.println("Terro");
-            andarAtual += andar;
-            System.out.println("Subindo para " + andarAtual + "o. andar");
-        }else if (andarAtual <= andares && andarAtual > 0){
-            System.out.println(andarAtual + "o. andar");
-            andarAtual += andar;
-            System.out.println("Subindo para " + andarAtual + "o. andar");
-        }else if (andarAtual == subsolo){
-            System.out.println("Subsolo" + andarAtual);
-            andarAtual += andar;
-            System.out.println("Subindo para " + andarAtual + "o. andar");
+        if (andar > 0){
+            System.out.println(getAndar());
+            do {
+                sobe();
+                andar--;
+            }while (andar > 0);
+        }else {
+            System.out.println(getAndar());
+            do {
+                desce();
+                andar++;
+            }while (andar < 0);
         }
 
-        if (andarAtual == 0){
-            System.out.println("Terro");
-            andarAtual -= andar;
-            System.out.println("Descendo para o subsolo " + andarAtual);
-        }else if (andarAtual <= andares && andarAtual > 0){
-            System.out.println(andarAtual + "o. andar");
-            andarAtual -= andar;
-            System.out.println("Descendo para " + andarAtual + "o. andar");
-        }else if (andarAtual < 0 && andarAtual >= subsolo){
-            System.out.println("Subsolo" + andarAtual);
-            System.out.println("Descendo para o subsolo " + andarAtual);
-        }
     }
 
 }

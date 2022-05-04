@@ -13,8 +13,14 @@ public class Forno {
     }
 
     public Forno(boolean aberto, int capacidade) {
+
+        if (capacidade <= 0){
+            System.out.println("Valor invalido!");
+        }else {
+            this.capacidade = capacidade;
+        }
+
         this.aberto = aberto;
-        this.capacidade = capacidade;
     }
 
     public String toString(){
@@ -35,59 +41,95 @@ public class Forno {
     }
 
     public void liga(){
-        if (aberto == true || capacidade == 0 || assados == true || paes == 0 || capacidade < paes){
-            System.out.println("O forno não pode ser ligado");
-        }else if (aberto == false || paes <= capacidade || paes >= 1 || assados == false){
-            System.out.println("O forno pode ser ligado");
-            ligado = true;
-            System.out.println("Forno foi ligado");
+        if (aberto){
+            System.out.println("O forno não pode ser ligado!");
+        }else {
+            if (paes <= 0){
+                System.out.println("O forno não pode ser ligado!");
+            }else {
+                if (assados == true){
+                    System.out.println("O forno não pode ser ligado!");
+                }else {
+                    ligado = true;
+                }
+            }
         }
+
     }
     public void desliga(){
         ligado = false;
         if (ligado == false){
             assados = true;
-            System.out.println("Os pães estão assados");
         }
     }
     public void abrePorta(){
-        aberto = true;
-        if (aberto == true && ligado == true){
-            System.out.println("O padeiro se queimou!");
-        }else if (aberto == true && assados == false){
-            System.out.println("Os pães não estão assados");
-        }
+       if (aberto){
+          if (ligado){
+              aberto = true;
+          }else {
+              aberto = true;
+              System.out.println("O padeiro se queimou!");
+          }
+       }
+
     }
     public void fechaPorta(){
-        aberto = false;
+      if (aberto == true){
+          if (ligado == true){
+              System.out.println("O forno está ligado, não pode ser fechado");
+          }else {
+              aberto = false;
+          }
+      }
     }
     public void colocaPao(){
-        if (paes <= capacidade && assados == true){
-            System.out.println("Não pode colocar pães crus junto com assados!");
-        }else if (ligado == true && assados == true){
-            System.out.println("O padeiro se queimou");
-        }else if (ligado == false && assados == false){
-            System.out.println("Colocando os pães para assar!");
-
+        if (assados == true){
+            System.out.println("Tem pães assados no forno, não pode misturar!");
+        }else {
+            if (paes > 0 && paes <= capacidade){
+                if (ligado){
+                    if (paes > 0 && paes <= capacidade){
+                        System.out.println("Pães foram colocados para assar!");
+                    }else {
+                        System.out.println("Valor invalido!");
+                    }
+                }else {
+                    System.out.println("Os pães ainda não estão prontos");
+                }
+            }else {
+                System.out.println("Valores invalidos!");
+            }
         }
     }
 
     public void retiraPao(){
-        if (assados == true && ligado == false && aberto == true){
-            System.out.println("Os pães são retirados");
-            paes = paes - 1 ;
-            assados = false;
-        }else {
-            System.out.println("Os pães não podem ser retirados!");
-        }
+       if (assados){
+           System.out.println("Ainda não estão assados!");
+       }else {
+           paes--;
+       }
     }
 
     public void retiraPao(int paes){
-        this.paes = paes;
-        retiraPao(2);
+       if (paes <= capacidade && paes > 0){
+           if (assados){
+               System.out.println("Ainda não estão assados!");
+           }else {
+               do {
+                   retiraPao();
+                   paes--;
+               }while (paes >= 0);
+           }
+       }else {
+           System.out.println("Valor invalido!");
+       }
     }
 
     public void descarrega(){
-        retiraPao(capacidade);
+        if (paes <= 0){
+            System.out.println("Forno já está vazio");
+        }else {
+            retiraPao(capacidade);
+        }
     }
 }
