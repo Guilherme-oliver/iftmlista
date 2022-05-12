@@ -8,7 +8,7 @@ public class Retangulo {
     }
 
     public Retangulo(int lado1, int lado2) {
-        if (lado1 < 0 && lado2 < 0){
+        if (lado1 <= 0 || lado2 <= 0){
             System.out.println("Valores invalidos!");
         }else {
             this.lado1 = lado1;
