@@ -2,11 +2,12 @@ package aula22.questao07;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Questao07 {
     public static void main(String[] args) {
 
-        List<Pessoa> pessoas = new ArrayList<Pessoa>();
+        List<Pessoa> pessoas = new ArrayList<>();
 
         pessoas.add(0, new Pessoa("Joao", 22));
         pessoas.add(1, new Pessoa("Pedro", 20));
@@ -17,6 +18,7 @@ public class Questao07 {
         for (Pessoa x : pessoas){
             System.out.println(x);
         }
+        System.out.println();
 
         pessoas.add(1, new Pessoa("Karina", 30));
         pessoas.add(3, new Pessoa("Kleber", 50));
@@ -25,6 +27,17 @@ public class Questao07 {
         for (Pessoa x : pessoas){
             System.out.println(x);
         }
+        System.out.println();
 
+        Random gerador = new Random();
+
+        for (int i = 0; i <= 2; i++){
+            int numeroAleatorio = gerador.nextInt(pessoas.size() -1);
+            pessoas.get(numeroAleatorio).apresenta();
+            pessoas.remove(numeroAleatorio);
+            for (Pessoa x : pessoas){
+                System.out.println(x);
+            }
+        }
     }
 }

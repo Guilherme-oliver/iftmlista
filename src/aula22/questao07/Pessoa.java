@@ -5,6 +5,7 @@ public class Pessoa {
     private int idade;
 
     public Pessoa(String nome, int idade){
+
         if (nome.length() == 0 || nome == null){
             System.out.println("Nome invalido!");
         }else {
@@ -15,6 +16,22 @@ public class Pessoa {
         }else {
             this.idade = idade;
         }
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public void apresenta(){
