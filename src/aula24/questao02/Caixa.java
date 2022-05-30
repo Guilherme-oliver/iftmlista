@@ -14,22 +14,26 @@ public class Caixa {
         }
     }
     public void addOvo(Ovo o){
-        for (int i=0; i<12; i++){
-            if (this.ovos[i] == null){
-                this.ovos[i] = o;
-                break;
-            }else if (i == 12){
-                System.out.println("Cartela cheia");
+        if (this.ovos.length == 12){
+            System.out.println("Cartela cheia!");
+        }else {
+            for (int i=0; i<= ovos.length; i++){
+                if (this.ovos[i] == null){
+                    this.ovos[i] = o;
+                    break;
+                }
             }
         }
     }
     public void removeOvo(){
-        for (int i=12; i>=12; i--){
-            if (this.ovos[i] != null){
-                this.ovos[i] = null;
-                break;
-            }else if (i ==0){
-                System.out.println("Sem ovos");
+        if (this.ovos.length == 0){
+            System.out.println("Cartela vazia");
+        }else {
+            for (int i = ovos.length; i <= ovos.length; i--){
+                if (this.ovos[i] != null){
+                    this.ovos[i] = null;
+                    break;
+                }
             }
         }
 
