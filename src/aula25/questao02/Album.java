@@ -28,7 +28,7 @@ public class Album {
         }
     }
     public void removeMusica(){
-        for (int i = musicas.length; i <= musicas.length; i--){
+        for (int i = musicas.length -1 ; i <= musicas.length; i--){
             if (this.musicas[i] != null){
                 this.musicas[i] = null;
                 break;
@@ -36,11 +36,19 @@ public class Album {
         }
     }
     public String toString(){
+        String musicas  = "";
+        for(int i = 0; i < this.musicas.length; i ++){
+            musicas = musicas.concat(String.valueOf(this.musicas[i]).concat("\n"));
+        }
         return "Nome do album: "
                 + nome
                 + "\n"
                 + "Nome do artista: "
-                + artista;
+                + artista
+                + "\n"
+                + "Nomes das músicas: "
+                + "\n"
+                + musicas;
     }
 
 }

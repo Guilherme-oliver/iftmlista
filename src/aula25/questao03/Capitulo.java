@@ -10,6 +10,6 @@ public class Capitulo {
     }
 
     public String getConteudo() {
-        return conteudo;
+        return conteudo.toString();
     }
 }

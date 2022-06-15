@@ -25,7 +25,12 @@ public class Poltrona {
             System.out.println("A pessoa já levantou");
         }
     }
-    public String toString(){
-        return null;
+
+    @Override
+    public String toString() {
+        return "Poltrona{" +
+                "numero=" + numero +
+                ", pessoa=" + pessoa +
+                '}';
     }
 }

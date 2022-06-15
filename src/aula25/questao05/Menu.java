@@ -6,8 +6,6 @@ import java.util.LinkedList;
 public class Menu {
     private LinkedList<String> itens;
 
-    public Menu(){
-    }
     public Menu(LinkedList<String> itens) {
         if (itens == null){
             System.out.println("Vazio");

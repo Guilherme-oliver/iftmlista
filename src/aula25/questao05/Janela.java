@@ -5,32 +5,37 @@ import java.util.LinkedList;
 //Composição: Multiplicidade 1
 public class Janela {
     private String titulo;
-    private LinkedList<String> itens;
+    private Menu menu;
+
 
     public Janela(String titulo) {
         if (titulo.length() == 0){
             System.out.println("Nome invalido!");
         }else {
             this.titulo = titulo;
+            this.menu = new Menu(new LinkedList<>());
         }
+
     }
 
-    public Menu(String titulo, LinkedList<String> itens){
+    public Janela(String titulo, LinkedList<String> itens){
         this.titulo = titulo;
-        this.itens = itens;
+        this.menu = new Menu(itens);
+
     }
 
     public void addItemMenu(String item){
-        this.itens.add(item);
+        menu.addItem(item);
     }
     public void removeItemMenu(){
-        this.itens.removeFirst();
+       menu.removeItemMenu();
     }
     public String toString(){
         return "Titulo: "
                 + titulo
                 + "\n"
-                + "Itens: "
-                + itens;
+                + "Menu: "
+                + menu;
+
     }
 }

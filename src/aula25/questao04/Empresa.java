@@ -24,10 +24,17 @@ public class Empresa {
         }
     }
     private double calcSalariosMensal(){
-
+        Double soma;
+        return  soma = funcionarios.getFirst().getSalario() + funcionarios.getLast().getSalario();
     }
     public String toString(){
         return "Dono: "
-                + dono;
+                + dono
+                + "\n"
+                + "Funcionarios: "
+                + funcionarios
+                + "\n"
+                + "Gastos com salarios: "
+                + calcSalariosMensal();
     }
 }

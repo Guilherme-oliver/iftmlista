@@ -35,6 +35,12 @@ public class Livro {
     }
     public String toString(){
         return "Autor: "
-                + autor;
+                + this.autor
+                + "\n"
+                + "Titulo: "
+                + this.titulo
+                + "\n"
+                + "Conteudo: "
+                + this.capitulos.toString();
     }
 }
