@@ -4,25 +4,29 @@ import java.util.LinkedList;
 
 public class CarrinhoMR {
     private String id;
-    private LinkedList<Visitante> visitantes = new LinkedList<>();
-
+    private Visitante visitante;
     public CarrinhoMR(String id) {
-        this.id = id;
+        if (id.length() == 0){
+            System.out.println("ID invalido");
+        }else {
+            this.id = id;
+        }
     }
     public boolean associaOcupante(Visitante v){
-        if (visitantes == null){
-            visitantes.add(v);
+        if (this.visitante == null){
+            this.visitante = v;
             return true;
         }else {
             return false;
         }
     }
     public void daVolta(){
-        if (visitantes.contains(visitantes)){
-            System.out.println("Carrinho está dando uma volta");
-            this.visitantes.removeAll(this.visitantes);
+        if (associaOcupante(null)){
+            System.out.println("Carrinho vazio não pode sair!");
         }else {
-            System.out.println("Carrinho não pode dar uma volta");
+            System.out.println("Os visitante(s) está(ão) dando uma volta");
+            this.visitante = null;
+            System.out.println("Depois da volta, todos foram embora!");
         }
     }
 }

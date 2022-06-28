@@ -7,13 +7,18 @@ public class Humano {
     private LinkedList<Cachorro> cachorros = new LinkedList<>();
 
     public Humano(String nome) {
-        this.nome = nome;
+        if (nome.length() == 0){
+            System.out.println("Nome invalido");
+        }else {
+            this.nome = nome;
+        }
     }
     public String getNome() {
         return nome;
     }
     public void adota(Cachorro c){
         this.cachorros.add(c);
+
     }
     public String toString(){
         String info = "";

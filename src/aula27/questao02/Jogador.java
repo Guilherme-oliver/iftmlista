@@ -7,12 +7,17 @@ public class Jogador {
     private String nome;
     private Arma arma;
 
-    public Jogador(String nome) {
-        this.nome = nome;
-    }
-
-    public void associaArma(Arma a){
-        this.arma = a;
+    public Jogador(String nome, Arma arma) {
+        if (nome.length() == 0){
+            System.out.println("Nome invalido!");
+        }else {
+            this.nome = nome;
+        }
+        if (this.arma == null){
+            System.out.println("Erro");
+        }else {
+            this.arma = arma;
+        }
     }
 
     public String getNome() {
@@ -36,9 +41,8 @@ public class Jogador {
 
     @Override
     public String toString() {
-        return "Jogador{" +
-                "nome='" + nome + '\'' +
-                ", arma=" + arma +
-                '}';
+        return "Nome: "
+                + nome
+                + "\n";
     }
 }

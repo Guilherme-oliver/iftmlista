@@ -8,8 +8,16 @@ public class Medico {
     private LinkedList<Paciente> pacientes = new LinkedList<>();
 
     public Medico(String nome, String crm) {
-        this.nome = nome;
-        this.crm = crm;
+        if (nome.length() <= 0){
+            System.out.println("Nome invalido!");
+        }else {
+            this.nome = nome;
+        }
+        if (crm.length() <= 0){
+            System.out.println("CRM invalido!");
+        }else {
+            this.crm = crm;
+        }
     }
 
     public String getNome(){
@@ -26,7 +34,7 @@ public class Medico {
             info += "\nSem paciente";
         }else {
             for (int i=0; i<this.pacientes.size(); i++){
-                info += "\nPaciente: " + i + ": " + this.pacientes.get(i);
+                info += "\nPaciente: " + (i + 1) + ": " + this.pacientes.get(i);
             }
         }
         return "Nome do médico: "

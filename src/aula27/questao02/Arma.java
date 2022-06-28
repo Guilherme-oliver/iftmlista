@@ -23,8 +23,10 @@ public class Arma {
     }
     public boolean temJogador(){
         if (this.jogador != null){
+            System.out.println("Tem jogador");
             return true;
         }else {
+            System.out.println("Não tem jogador");
             return false;
         }
     }
@@ -33,13 +35,15 @@ public class Arma {
     }
     public boolean estaVazio(){
         if (this.bolas == 0){
+            System.out.println("Está vazio");
             return true;
         }else {
+            System.out.println("Tem bola(s) ainda");
             return false;
         }
     }
     public void addBolas(int bolas){
-        if (bolas > this.bolas || bolas < 0){
+        if (bolas < 0){
             System.out.println("Valor invalido!");
         }else {
             this.bolas += bolas;
@@ -47,8 +51,10 @@ public class Arma {
     }
     public boolean removeBola(){
         if (this.bolas == 0){
+            System.out.println("Já está vazio");
             return false;
         }else {
+            System.out.println("Removendo uma bola");
             bolas--;
             return true;
         }
@@ -56,10 +62,13 @@ public class Arma {
 
     @Override
     public String toString() {
-        return "Arma{" +
-                "id='" + id + '\'' +
-                ", bolas=" + bolas +
-                ", jogador=" + jogador +
-                '}';
+        return "Jogador: "
+                + jogador
+                + "\n"
+                + "ID: "
+                + id
+                + "\n"
+                + "Bolas: "
+                + bolas;
     }
 }

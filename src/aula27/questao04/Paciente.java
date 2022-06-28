@@ -5,8 +5,16 @@ public class Paciente {
     private int idade;
 
     public Paciente(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
+        if (nome.length() == 0){
+            System.out.println("Nome invalido!");
+        }else {
+            this.nome = nome;
+        }
+        if (idade < 0){
+            System.out.println("Idade invalida");
+        }else {
+            this.idade = idade;
+        }
     }
 
     public String toString(){
@@ -14,6 +22,6 @@ public class Paciente {
                 + this.nome
                 + "\n"
                 + "Idade: "
-                + idade;
+                + idade ;
     }
 }

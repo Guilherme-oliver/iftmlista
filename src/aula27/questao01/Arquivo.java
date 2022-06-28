@@ -9,14 +9,20 @@ public class Arquivo {
     private int tamanho;
 
     public Arquivo(String nome, int tamanho) {
-        this.nome = nome;
-        this.tamanho = tamanho;
+        if (nome.length() == 0){
+            System.out.println("Nome invalido!");
+        }else {
+            this.nome = nome;
+        }
+        if (tamanho < 0){
+            System.out.println("Tamanho invalido");
+        }else {
+            this.tamanho = tamanho;
+        }
     }
     public String toString(){
-        return "Nome: "
-                + nome
-                + "\n"
-                + "Tamanho: "
-                + tamanho;
+        String info = "";
+        info += "Nome: " + nome + "\n" + "Tamanho: " + tamanho;
+        return info;
     }
 }

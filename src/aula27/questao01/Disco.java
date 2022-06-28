@@ -8,7 +8,11 @@ public class Disco {
     private LinkedList<Arquivo> arquivos = new LinkedList<Arquivo>();
 
     public Disco(int capacidade) {
-        this.capacidade = capacidade;
+        if (capacidade < 0){
+            System.out.println("Valor invalido!");
+        }else {
+            this.capacidade = capacidade;
+        }
     }
 
     public void grana(Arquivo a){

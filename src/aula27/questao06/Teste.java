@@ -13,9 +13,19 @@ public class Teste {
         System.out.println("Primeira pessoa: ");
         System.out.println(humano1.toString());
         System.out.println(cachorro2.toString());
+        System.out.println();
 
         System.out.println("Segunda pessoa: ");
         System.out.println(humano2.toString());
         System.out.println(cachorro1.toString());
+        System.out.println();
+
+        cachorro1.associaHumano(humano2);
+        cachorro2.associaHumano(humano1);
+
+        System.out.println("Atualização dos status: " + humano1.toString() + cachorro2.toString());
+        System.out.println();
+        System.out.println("Atualização dos status: " + humano2.toString() + cachorro1.toString());
+
     }
 }

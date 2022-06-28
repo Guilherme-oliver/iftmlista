@@ -6,18 +6,28 @@ public class Cachorro {
     private Humano humano;
 
     public Cachorro(String nome, String raca) {
-        this.nome = nome;
-        this.raca = raca;
+        if (nome.length() == 0){
+            System.out.println("Nome invalido!");
+        }else {
+            this.nome = nome;
+        }
+        if (raca.length() == 0){
+            System.out.println("Raça invalida!");
+        }else {
+            this.raca = raca;
+        }
     }
     public boolean temDono(){
         if (this.humano == null){
+            System.out.println("Não tem dono");
             return false;
-        }elsZe {
+        }else {
+            System.out.println("Tem dono");
             return true;
         }
     }
     public void associaHumano(Humano h){
-        this.humano.adota(this);
+        this.humano = h;
     }
     public String toString(){
         return "Nome do cachorro: "

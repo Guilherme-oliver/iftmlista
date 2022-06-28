@@ -4,33 +4,37 @@ import java.util.LinkedList;
 
 public class Visitante {
     private static int contadorTicket = 0;
-    private int ticket;
+    private int ticket = contadorTicket;
     private int voltas = 0;
-    private LinkedList<CarrinhoMR> carrinhoMRS = new LinkedList<>();
+    private CarrinhoMR carrinhoMR;
 
     public Visitante(){
     }
+
     public void entra(CarrinhoMR cmr){
-        int posicao = this.carrinhoMRS.indexOf(cmr);
-        if (posicao == -1){
-            this.carrinhoMRS.add(cmr);
+        if (carrinhoMR != null){
+            System.out.println("O carrinho já está cheio");
         }else {
-            System.out.println("Já possui uma pessoa no carrinho");
+            this.ticket++;
+            this.carrinhoMR = cmr;
         }
     }
+
     public void sai(){
-        if (this.carrinhoMRS.size() > 1){
-           this.carrinhoMRS.removeAll(carrinhoMRS);
+        if (this.carrinhoMR != null){
+            this.voltas++;
+            this.carrinhoMR.daVolta();
         }else {
-            System.out.println("Não tem mais pessoas no carrinho");
+            System.out.println("O carrinho já está vazio!");
         }
     }
 
     @Override
     public String toString() {
-        return "Visitante{" +
-                "ticket=" + ticket +
-                ", voltas=" + voltas +
-                '}';
+        return "Ticket: "
+                + ticket
+                + "\n"
+                + "Voltas: "
+                + voltas;
     }
 }
