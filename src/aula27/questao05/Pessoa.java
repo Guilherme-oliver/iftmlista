@@ -3,80 +3,68 @@ package aula27.questao05;
 public class Pessoa {
     private String nome;
     private boolean homem;
-    private boolean casado;
-    private Pessoa pessoa;
+    private Pessoa conjuge;
 
-   public Pessoa(String nome, boolean homem){
-       if (nome.length() == 0){
-           System.out.println("Nome invalido!");
-       }else {
-           this.nome = nome;
-       }
-       this.homem = homem;
-   }
-
-   public boolean ehHomem(){
-       if (this.homem == false){
-           System.out.println("Não é homem");
-           return false;
-       }else {
-           System.out.println("É homem");
-           return true;
-       }
-   }
-
+    public Pessoa(String nome, boolean homem){
+        if (nome.length() == 0){
+            System.out.println("Nome invalido!");
+        }else {
+            this.nome = nome;
+        }
+        this.homem = homem;
+    }
+    public boolean ehHomem(){
+        if (this.homem == false){
+            return false;
+        }else {
+            return true;
+        }
+    }
     public String getNome() {
         return nome;
     }
-
     public boolean getCasado() {
-        if (casado == true){
+        if (this.conjuge == null){
+            return false;
+        }else {
+            return true;
+        }
+    }
+    public void casa(Pessoa p){
+        if (this.ehHomem() != p.ehHomem()){
+            if (this.getCasado() == false || p.getCasado() == false){
+                this.conjuge = p;
+                p.aceitaCasamento(this);
+            }else {
+                System.out.println("Não pode casar!");
+            }
+        }else {
+            System.out.println("Erro!");
+        }
+    }
+    private void aceitaCasamento(Pessoa p){
+        this.conjuge = p;
+    }
+    public boolean divorcia(){
+        if (getCasado()){
+            aceitaDivorcio();
+            this.conjuge = null;
             return true;
         }else {
+            System.out.println("Já está solteiro(a)");
             return false;
         }
     }
-
-    public void casa(Pessoa p){
-       if (this.pessoa.homem != pessoa.ehHomem()){
-           if (this.pessoa.casado != true){
-               System.out.println("Casou");
-               this.pessoa.casado = true;
-               this.pessoa = p;
-           }else {
-                 System.out.println("Pessoa já é casada");
-               }
-       }else {
-           System.out.println("Só pode casar se for do sexo diferente: OBS: A questao que pede isso");
-       }
-    }
-
-    private void aceitaCasamento(Pessoa p){
-       if (this.pessoa == null){
-           this.pessoa = p;
-       }else {
-           System.out.println("Erro!");
-       }
-    }
-
-    public boolean divorcia(){
-       if (pessoa.casado == true){
-           System.out.println("O cônjuge aceitou o divorcio!");
-           this.pessoa.casado = false;
-           return false;
-       }else {
-           System.out.println("Já está separado!");
-           return true;
-       }
-    }
-
     private void aceitaDivorcio(){
-
+        this.conjuge.conjuge = null;
     }
-
     public String toString(){
-       String info = "";
-       info += "Nome da pessoa: " + nome + "\n" + "Sexo: " + homem + "\n" + "Estado civil: " + getCasado();
-       return info;
+        String info = "";
+        String estadoCivil = (getCasado()) ? "Casado" + "\n" : "Solteiro" + "\n";
+        String nomeDoConjuge = (getCasado()) ? "Nome do conjuge: " + this.conjuge.nome : "";
+        String sexo = (ehHomem()) ? "Masculino" : "Feminino";
+        info += "Nome da pessoa: " + nome + "\n" + "Sexo: " + sexo + "\n" + "Estado civil: "
+                + estadoCivil + nomeDoConjuge;
+        return info;
     }
 }
